@@ -1,0 +1,19 @@
+{
+  "name": "2048-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "sinon": "^4.1.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
