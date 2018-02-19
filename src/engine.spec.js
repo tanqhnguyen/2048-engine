@@ -298,6 +298,69 @@ describe('Engine', () => {
       ]);
     });
 
+    it('should not add new tiles if not be able to move', () => {
+      let moved = engine.move('left');
+      expect(engine.print({
+        returnString: true,
+        paddingSize: 2
+      })).to.equal(`
+[ 2][16][  ][  ]
+[ 4][16][  ][  ]
+[ 4][  ][  ][  ]
+[ 4][ 8][  ][  ]
+      `.trim());
+      expect(moved).to.eql([
+        {
+          from: {
+            x: 3,
+            y: 0,
+            value: null
+          },
+          to: {
+            x: 1,
+            y: 0,
+            value: 16
+          }
+        },
+        {
+          from: {
+            x: 2,
+            y: 2,
+            value: null
+          },
+          to: {
+            x: 0,
+            y: 2,
+            value: 4
+          }
+        },
+        {
+          from: {
+            x: 3,
+            y: 3,
+            value: null
+          },
+          to: {
+            x: 1,
+            y: 3,
+            value: 8
+          }
+        }
+      ]);
+
+      moved = engine.move('left', true);
+      expect(moved).to.eql([]);
+      expect(engine.print({
+        returnString: true,
+        paddingSize: 2
+      })).to.equal(`
+[ 2][16][  ][  ]
+[ 4][16][  ][  ]
+[ 4][  ][  ][  ]
+[ 4][ 8][  ][  ]
+      `.trim());
+    });
+
   });
 
   describe('random tiles', () => {

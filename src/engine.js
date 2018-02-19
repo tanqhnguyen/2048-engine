@@ -29,12 +29,17 @@ const DIRECTIONS = {
   }
 }
 
-// 40% of having a 4
+// 20% of having a 4
 const RANDOM_TILE_VALUES = [
   2,
   2,
   2,
-  4,
+  2,
+  2,
+  2,
+  2,
+  2,
+  2,
   4
 ];
 
@@ -179,7 +184,7 @@ class Engine {
       };
     }).filter(Boolean);
 
-    if (fillRandomTiles) {
+    if (fillRandomTiles && moved.length) {
       const result = this.fillRandomTiles();
       if (!result && moved.length === 0) {
         this.isEnded = true;
